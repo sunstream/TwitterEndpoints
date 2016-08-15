@@ -5,6 +5,7 @@ import org.junit.Assert;
 import utils.CommonErrorMessages;
 
 import java.util.List;
+import java.util.Set;
 
 public class TimelineAsserts implements CommonErrorMessages{
     public void verifyTweetsCount(List<Tweet> tweets, int expectedCount){
@@ -12,7 +13,7 @@ public class TimelineAsserts implements CommonErrorMessages{
         Assert.assertEquals(byInvalidCount("tweets in user timeline"), expectedCount, actualCount);
     }
 
-    public void verifyMaxAllowedHistorySize(List<String> tweetIds, int expectedHistorySize){
+    public void verifyMaxAllowedHistorySize(Set<String> tweetIds, int expectedHistorySize){
         int actualHistorySize = tweetIds.size();
         Assert.assertEquals(byMismatch("History size"), expectedHistorySize, actualHistorySize);
     }

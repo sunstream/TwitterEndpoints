@@ -12,7 +12,9 @@ import asserts.TimelineAsserts;
 import steps.TimelineSteps;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TimelineTests {
     private final TimelineSteps timelineSteps = new TimelineSteps();
@@ -135,7 +137,7 @@ public class TimelineTests {
         //? This method can only return up to 3,200 of a user’s most recent Tweets
         HttpResponse response = timelineSteps.requestTimelineOfDifferentUser(USER_WITH_MANY_TWEETS,
                 defaultUser, MAX_TWEETS_PER_REQUEST);
-        List<String> allTweetIds = new ArrayList<>();
+        Set<String> allTweetIds = new HashSet<>();
         List<String> idsFromLastResponse = responseParser.getTweetIdsFromResponse(response);
         allTweetIds.addAll(idsFromLastResponse);
         while (idsFromLastResponse.size() == MAX_TWEETS_PER_REQUEST
